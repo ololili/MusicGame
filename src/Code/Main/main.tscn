@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1aqwjfdxtpm7"]
+
+[ext_resource type="PackedScene" uid="uid://bcbb5nwbp1y7l" path="res://Code/Sound/music_player.tscn" id="1_wg7gd"]
+[ext_resource type="PackedScene" uid="uid://of6fid240lot" path="res://Code/Levels/LevelSegments/potion_shop.tscn" id="2_bivbi"]
+
+[node name="Main" type="Node2D"]
+
+[node name="MusicPlayer" parent="." instance=ExtResource("1_wg7gd")]
+
+[node name="PotionShop" parent="." instance=ExtResource("2_bivbi")]
+position = Vector2(122, 77)
+offset = Vector2(-25, -24)
