@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c38sn2ab2a2lh"]
+
+[ext_resource type="Texture2D" uid="uid://d08lyggv51i5v" path="res://Assets/Sprites/Backgrounds/EmptyShop.png" id="1_c8tnq"]
+
+[node name="EmptyShop" type="Sprite2D"]
+texture = ExtResource("1_c8tnq")

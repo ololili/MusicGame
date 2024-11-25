@@ -1,12 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1aqwjfdxtpm7"]
+[gd_scene load_steps=7 format=3 uid="uid://d1aqwjfdxtpm7"]
 
 [ext_resource type="PackedScene" uid="uid://bcbb5nwbp1y7l" path="res://Code/Sound/music_player.tscn" id="1_wg7gd"]
 [ext_resource type="PackedScene" uid="uid://of6fid240lot" path="res://Code/Animation/Backgrounds/potion_shop.tscn" id="2_bivbi"]
+[ext_resource type="PackedScene" uid="uid://c38sn2ab2a2lh" path="res://Code/Animation/Backgrounds/empty_shop.tscn" id="2_gv38n"]
 [ext_resource type="PackedScene" uid="uid://dd17gy7m237yf" path="res://Code/Animation/Backgrounds/broom_shop.tscn" id="3_5nm3x"]
+[ext_resource type="PackedScene" uid="uid://q4c1yalcba2b" path="res://Code/Animation/Actors/beetle.tscn" id="5_yxf14"]
+[ext_resource type="PackedScene" uid="uid://6vmxp4dkwd7j" path="res://Code/Animation/Actors/witch.tscn" id="6_sn84j"]
 
 [node name="Main" type="Node2D"]
 
 [node name="MusicPlayer" parent="." instance=ExtResource("1_wg7gd")]
+
+[node name="EmptyShop" parent="." instance=ExtResource("2_gv38n")]
+position = Vector2(96, 54)
 
 [node name="PotionShop" parent="." instance=ExtResource("2_bivbi")]
 position = Vector2(57, 64)
@@ -14,3 +20,9 @@ offset = Vector2(-25, -24)
 
 [node name="BroomShop" parent="." instance=ExtResource("3_5nm3x")]
 position = Vector2(160, 40)
+
+[node name="Beetle" parent="." instance=ExtResource("5_yxf14")]
+position = Vector2(32, 95)
+
+[node name="Witch" parent="." instance=ExtResource("6_sn84j")]
+position = Vector2(168, 87)
