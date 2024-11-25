@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://q4c1yalcba2b"]
 
-[ext_resource type="Texture2D" uid="uid://ckobafmrjvgpd" path="res://Assets/Sprites/Actors/Beetle.png" id="1_8mwyp"]
+[ext_resource type="Texture2D" uid="uid://ckobafmrjvgpd" path="res://Assets/Sprites/Actors/Beetle.png" id="1_0lcf4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fixou"]
 size = Vector2(28, 12)
@@ -46,7 +46,7 @@ _data = {
 [node name="Beetle" type="Area2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_8mwyp")
+texture = ExtResource("1_0lcf4")
 hframes = 6
 frame = 5
 

@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://of6fid240lot"]
 
 [ext_resource type="Texture2D" uid="uid://ccgim8xm2hlpp" path="res://Assets/Sprites/Backgrounds/PotionShop.png" id="1_bpxtu"]
-[ext_resource type="Script" path="res://Code/Levels/LevelSegments/Scripts/potion_shop.gd" id="2_5dnwv"]
+[ext_resource type="Script" path="res://Code/Animation/Scripts/my_animation_player.gd" id="3_vakgp"]
 
-[sub_resource type="Animation" id="Animation_2qtu3"]
+[sub_resource type="Animation" id="Animation_2rfdt"]
 resource_name = "standard"
 length = 1.8
 loop_mode = 1
@@ -20,7 +20,7 @@ tracks/0/keys = {
 "values": [0, 17]
 }
 
-[sub_resource type="Animation" id="Animation_7o3gd"]
+[sub_resource type="Animation" id="Animation_gu1ry"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -35,18 +35,18 @@ tracks/0/keys = {
 "values": [0]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_kvm6w"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wnix2"]
 _data = {
-"RESET": SubResource("Animation_7o3gd"),
-"standard": SubResource("Animation_2qtu3")
+"RESET": SubResource("Animation_gu1ry"),
+"standard": SubResource("Animation_2rfdt")
 }
 
 [node name="PotionShop" type="Sprite2D"]
 texture = ExtResource("1_bpxtu")
 hframes = 18
-script = ExtResource("2_5dnwv")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="MyAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_kvm6w")
+"": SubResource("AnimationLibrary_wnix2")
 }
+script = ExtResource("3_vakgp")
