@@ -11,7 +11,7 @@ func _ready():
 func attack():
 	if not is_cooling_down:
 		var node: Node2D = projectile.instantiate()
-		get_parent().add_child(node)
+		add_sibling(node)
 		node.global_position = $SpawnPosition.global_position
 		is_cooling_down = true
 	else:

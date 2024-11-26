@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://q4c1yalcba2b"]
+[gd_scene load_steps=8 format=3 uid="uid://q4c1yalcba2b"]
 
 [ext_resource type="Texture2D" uid="uid://ckobafmrjvgpd" path="res://Assets/Sprites/Actors/Beetle.png" id="1_0lcf4"]
+[ext_resource type="Script" path="res://Code/Animation/Actors/Scripts/beetle.gd" id="1_17thw"]
 [ext_resource type="Script" path="res://Code/Animation/Scripts/my_animation_player.gd" id="2_vp1p0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fixou"]
@@ -47,6 +48,7 @@ _data = {
 [node name="Beetle" type="Area2D"]
 collision_layer = 2
 collision_mask = 8
+script = ExtResource("1_17thw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_0lcf4")
@@ -61,3 +63,6 @@ libraries = {
 "": SubResource("AnimationLibrary_8jcwu")
 }
 script = ExtResource("2_vp1p0")
+
+[node name="SpawnPosition" type="Node2D" parent="."]
+position = Vector2(26, -4)

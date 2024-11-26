@@ -5,6 +5,7 @@ signal new_song_started
 signal received_damage(amount: float)
 
 var bpm: int
+var time_to_beat: float
 
 
 func beating():
