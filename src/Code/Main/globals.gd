@@ -1,7 +1,7 @@
 extends Node
 
 signal has_beaten
-signal new_song_started(bpm: int)
+signal new_song_started
 
 var bpm: int
 
@@ -11,4 +11,4 @@ func beating():
 
 func start_new_song(p_bpm: int):
 	bpm = p_bpm
-	new_song_started.emit(bpm)
+	new_song_started.emit()
