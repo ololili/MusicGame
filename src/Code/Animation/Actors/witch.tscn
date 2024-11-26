@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=3 uid="uid://6vmxp4dkwd7j"]
+
+[ext_resource type="Script" path="res://Code/Animation/Scripts/my_animation_player.gd" id="1_0gcv3"]
+[ext_resource type="Texture2D" uid="uid://damdonsm5rfaw" path="res://Assets/Sprites/Actors/Witch.png" id="2_68m82"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cjsge"]
+size = Vector2(8, 21)
+
+[sub_resource type="Animation" id="Animation_20scd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_cm3pf"]
+resource_name = "standard"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oci8b"]
+_data = {
+"RESET": SubResource("Animation_20scd"),
+"standard": SubResource("Animation_cm3pf")
+}
+
+[node name="Witch" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5.5)
+shape = SubResource("RectangleShape2D_cjsge")
+
+[node name="MyAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_oci8b")
+}
+script = ExtResource("1_0gcv3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_68m82")
+hframes = 6

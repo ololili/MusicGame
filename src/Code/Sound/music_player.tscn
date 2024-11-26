@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcbb5nwbp1y7l"]
+
+[ext_resource type="Script" path="res://Code/Sound/Scripts/music_player.gd" id="1_lbwga"]
+[ext_resource type="AudioStream" uid="uid://cbcvb1x7joddj" path="res://Assets/Music/bip-bop.ogg" id="2_tfewi"]
+[ext_resource type="AudioStream" uid="uid://duhsk5u4m8q0" path="res://Assets/Music/mountain-trials.ogg" id="3_mgxur"]
+
+[node name="MusicPlayer" type="AudioStreamPlayer"]
+script = ExtResource("1_lbwga")
+intro_song = ExtResource("2_tfewi")
+battle_songs = Array[AudioStream]([ExtResource("3_mgxur")])
