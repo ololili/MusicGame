@@ -149,3 +149,5 @@ libraries = {
 }
 script = ExtResource("2_fysbx")
 has_one_animation = false
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

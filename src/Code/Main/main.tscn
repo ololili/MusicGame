@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d1aqwjfdxtpm7"]
+[gd_scene load_steps=8 format=3 uid="uid://d1aqwjfdxtpm7"]
 
 [ext_resource type="PackedScene" uid="uid://bcbb5nwbp1y7l" path="res://Code/Sound/music_player.tscn" id="1_wg7gd"]
 [ext_resource type="PackedScene" uid="uid://of6fid240lot" path="res://Code/Animation/Backgrounds/potion_shop.tscn" id="2_bivbi"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dd17gy7m237yf" path="res://Code/Animation/Backgrounds/broom_shop.tscn" id="3_5nm3x"]
 [ext_resource type="PackedScene" uid="uid://q4c1yalcba2b" path="res://Code/Animation/Actors/beetle.tscn" id="5_yxf14"]
 [ext_resource type="PackedScene" uid="uid://6vmxp4dkwd7j" path="res://Code/Animation/Actors/witch.tscn" id="6_sn84j"]
+[ext_resource type="PackedScene" uid="uid://dh5kxm6cm8pes" path="res://Code/UI/heath_bar.tscn" id="7_c80qo"]
 
 [node name="Main" type="Node2D"]
 
@@ -26,3 +27,9 @@ position = Vector2(32, 95)
 
 [node name="Witch" parent="." instance=ExtResource("6_sn84j")]
 position = Vector2(168, 87)
+
+[node name="HeathBar" parent="." instance=ExtResource("7_c80qo")]
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 128.0
+offset_bottom = 80.0

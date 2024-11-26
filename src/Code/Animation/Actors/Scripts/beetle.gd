@@ -7,13 +7,13 @@ var current_shield: Node2D
 
 func _process(_delta):
 	if Input.is_action_just_pressed("button"):
-		make_shield(0.1)
+		make_shield()
 	if Input.is_action_just_released("button"):
-		if current_shield:
+		if is_instance_valid(current_shield):
 			current_shield.queue_free()
 
-func make_shield(time_offset: float):
+func make_shield():
 	current_shield = shield.instantiate()
 	current_shield.global_position = $SpawnPosition.global_position
-	current_shield.get_node("MyAnimationPlayer").play("standard")
+	current_shield.start()
 	add_sibling(current_shield)
