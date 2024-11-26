@@ -26,6 +26,7 @@ func _on_area_entered(area):
 		queue_free()
 	else:
 		power.level -= area.power.level
+		get_parent().get_node("Beetle").add_power(area.power.level)
 		if power.level <= 0:
 			queue_free()
 		else:
