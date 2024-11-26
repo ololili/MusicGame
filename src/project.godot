@@ -27,6 +27,14 @@ window/size/window_width_override=960
 window/size/window_height_override=540
 window/stretch/mode="viewport"
 
+[layer_names]
+
+2d_physics/layer_1="beetle"
+2d_physics/layer_2="witch"
+2d_physics/layer_3="shield"
+2d_physics/layer_4="my_projectile"
+2d_physics/layer_5="enemy_projectile"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
