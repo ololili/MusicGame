@@ -11,6 +11,14 @@ var max_time_to_beat: float
 func beating():
 	has_beaten.emit()
 
+func get_beat_synchronization():
+	var synch = max(
+		time_to_beat / max_time_to_beat,
+		(max_time_to_beat - time_to_beat) / max_time_to_beat)
+	synch = synch * 2 - 1
+	# quality is first between 1 and 0.5 and then normalised to between 1 and 0
+	return synch
+
 func start_new_song(p_bpm: int):
 	bpm = p_bpm
 	max_time_to_beat = 60.0 / float(bpm)

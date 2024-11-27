@@ -37,11 +37,8 @@ func start():
 	animations.pause()
 
 func get_power_level():
-	var time_to_beat = Globals.time_to_beat
-	var max_time = Globals.max_time_to_beat
-	var quality = max(time_to_beat / max_time, (max_time - time_to_beat) / max_time)
-	quality = quality * 2 - 1
-	# quality is first between 1 and 0.5 and then normalised to inbetween 1 and 0
+	var quality = Globals.get_beat_synchronization()
+	
 	power.set_fraction(quality + ease_of_succes)
 
 	# print(quality, power.get_level_name(), power.level)
