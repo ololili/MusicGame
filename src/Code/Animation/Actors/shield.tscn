@@ -2,10 +2,11 @@
 
 [ext_resource type="Script" path="res://Code/Animation/Actors/Scripts/shield.gd" id="1_3goje"]
 [ext_resource type="Texture2D" uid="uid://dnj58n4twylfp" path="res://Assets/Sprites/Actors/Shield.png" id="1_6bplh"]
-[ext_resource type="Script" path="res://Code/Main/Scripts/power.gd" id="2_51ryg"]
+[ext_resource type="Script" path="res://Code/Main/Scripts/power_script.gd" id="2_51ryg"]
 [ext_resource type="Script" path="res://Code/Animation/Scripts/my_animation_player.gd" id="2_aajlb"]
 
 [sub_resource type="Resource" id="Resource_44pur"]
+resource_local_to_scene = true
 script = ExtResource("2_51ryg")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7xkjm"]

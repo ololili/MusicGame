@@ -10,7 +10,7 @@ var is_attacking: bool = false
 
 
 func _ready():
-	power.level = 0
+	power.set_fraction(0.0)
 	Globals.has_beaten.connect(_on_globals_has_beaten)
 
 func _process(_delta):
@@ -24,16 +24,14 @@ func _process(_delta):
 
 func attack():
 	var node: Node2D = projectile.instantiate()
-	node.start(power.level)
+	node.start(power.fraction)
 	node.global_position = $AttackPosition.global_position
-	power.level = 0
+	power.set_fraction(0.0)
 	add_sibling(node)
 
 
-func add_power(new_power: int):
-	power.level += new_power
-	if power.level > 5:
-		power.level = 5
+func add_power(power_change: float):
+	power.change_fraction(power_change)
 
 func make_shield():
 	current_shield = shield.instantiate()

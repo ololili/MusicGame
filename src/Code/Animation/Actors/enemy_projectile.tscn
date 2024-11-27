@@ -2,10 +2,11 @@
 
 [ext_resource type="Script" path="res://Code/Animation/Actors/Scripts/enemy_projectile.gd" id="1_6ewe7"]
 [ext_resource type="Texture2D" uid="uid://dglecdcpdn4u0" path="res://Assets/Sprites/Actors/EnemyProjectile.png" id="1_7w8aa"]
-[ext_resource type="Script" path="res://Code/Main/Scripts/power.gd" id="2_dy3xf"]
+[ext_resource type="Script" path="res://Code/Main/Scripts/power_script.gd" id="2_dy3xf"]
 [ext_resource type="Script" path="res://Code/Animation/Scripts/my_animation_player.gd" id="2_fysbx"]
 
 [sub_resource type="Resource" id="Resource_rcey7"]
+resource_local_to_scene = true
 script = ExtResource("2_dy3xf")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uqt57"]

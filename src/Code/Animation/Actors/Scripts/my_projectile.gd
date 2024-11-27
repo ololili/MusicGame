@@ -9,8 +9,8 @@ func _ready():
 func _process(delta):
 	position.x += speed * delta
 
-func start(starting_power: int):
-	power.level = starting_power
+func start(starting_power: float):
+	power.set_fraction(starting_power)
 
 
 func _on_area_entered(_area):

@@ -17,7 +17,7 @@ func _process(delta):
 
 func start():
 	is_moving = true
-	power.level = 5
+	power.set_fraction(1.0)
 
 
 func _on_area_entered(area):
@@ -25,9 +25,9 @@ func _on_area_entered(area):
 		Globals.deal_damage(-1 * power.level)
 		queue_free()
 	else:
-		power.level -= area.power.level
-		get_parent().get_node("Beetle").add_power(area.power.level)
-		if power.level <= 0:
+		power.change_fraction(-1 * area.power.fraction)
+		get_parent().get_node("Beetle").add_power(area.power.fraction)
+		if power.level == 0:
 			queue_free()
 		else:
 			$MyAnimationPlayer.play(power.get_level_name() + "_pow")
