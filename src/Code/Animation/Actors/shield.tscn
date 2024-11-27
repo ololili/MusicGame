@@ -10,7 +10,7 @@ resource_local_to_scene = true
 script = ExtResource("2_51ryg")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7xkjm"]
-size = Vector2(21, 27)
+size = Vector2(6, 27)
 
 [sub_resource type="Animation" id="Animation_t3x0u"]
 length = 0.001
@@ -125,7 +125,7 @@ power = SubResource("Resource_44pur")
 ease_of_succes = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 2.5)
+position = Vector2(8, 2.5)
 shape = SubResource("RectangleShape2D_7xkjm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

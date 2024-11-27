@@ -2,12 +2,13 @@ extends Area2D
 
 
 @export var power: Power = null
-@export var attack_cooldown: float = 0.5
+@export var cooldown_fraction: float = 0.5
 
 var shield: PackedScene = preload("res://Code/Animation/Actors/shield.tscn")
 var projectile: PackedScene = preload("res://Code/Animation/Actors/my_projectile.tscn")
 var current_shield: Node2D
 var cooldown: float = 0.0
+var max_cooldown: float = 0.0
 
 
 func _ready():
@@ -32,7 +33,7 @@ func attack():
 	node.start(power.fraction)
 
 	power.set_fraction(0.0)
-	cooldown = attack_cooldown
+	cooldown = max_cooldown
 
 
 func add_power(power_change: float):
@@ -49,6 +50,8 @@ func play_animation():
 	var animations: MyAnimationPlayer = $MyAnimationPlayer
 	animations.play(power.get_level_name() + "_pow")
 
+func set_max_cooldown():
+	max_cooldown = cooldown_fraction * Globals.max_time_to_beat
 
 func _on_globals_has_beaten():
 	play_animation()
