@@ -1,0 +1,13 @@
+[gd_scene load_steps=5 format=3 uid="uid://dh5kxm6cm8pes"]
+
+[ext_resource type="Texture2D" uid="uid://cgd7jd5btwfd1" path="res://Assets/Sprites/Actors/HealthBar/HealthBarBot.png" id="1_fe1ua"]
+[ext_resource type="Texture2D" uid="uid://cptburg1pccxv" path="res://Assets/Sprites/Actors/HealthBar/HealthBarTop.png" id="2_wb407"]
+[ext_resource type="Texture2D" uid="uid://cc1jldmgvw0jg" path="res://Assets/Sprites/Actors/HealthBar/HealthBarMid.png" id="3_t3ngw"]
+[ext_resource type="Script" path="res://Code/UI/Scripts/heath_bar.gd" id="4_b3enn"]
+
+[node name="HeathBar" type="TextureProgressBar"]
+value = 50.0
+texture_under = ExtResource("1_fe1ua")
+texture_over = ExtResource("2_wb407")
+texture_progress = ExtResource("3_t3ngw")
+script = ExtResource("4_b3enn")

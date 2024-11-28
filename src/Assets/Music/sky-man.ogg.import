@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/sky-man.ogg-2a17ae47d97c1ba21c523ddeb7dc8a2a.
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=90.0
 beat_count=0
 bar_beats=4

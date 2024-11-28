@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://6vmxp4dkwd7j"]
+[gd_scene load_steps=8 format=3 uid="uid://6vmxp4dkwd7j"]
 
 [ext_resource type="Script" path="res://Code/Animation/Scripts/my_animation_player.gd" id="1_0gcv3"]
+[ext_resource type="Script" path="res://Code/Animation/Actors/Scripts/witch.gd" id="1_h23r3"]
 [ext_resource type="Texture2D" uid="uid://damdonsm5rfaw" path="res://Assets/Sprites/Actors/Witch.png" id="2_68m82"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cjsge"]
@@ -45,6 +46,9 @@ _data = {
 }
 
 [node name="Witch" type="Area2D"]
+collision_layer = 2
+collision_mask = 8
+script = ExtResource("1_h23r3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5.5)
@@ -59,3 +63,6 @@ script = ExtResource("1_0gcv3")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_68m82")
 hframes = 6
+
+[node name="SpawnPosition" type="Node2D" parent="."]
+position = Vector2(-16, 8)

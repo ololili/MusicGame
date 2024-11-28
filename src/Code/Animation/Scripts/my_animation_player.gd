@@ -2,17 +2,17 @@ extends AnimationPlayer
 
 class_name MyAnimationPlayer
 
+@export var has_one_animation: bool = true
 
 func _ready():
-	Globals.has_beaten.connect(start)
-	Globals.new_song_started.connect(restart)
+	set_speed()
+	if has_one_animation:
+		Globals.new_song_started.connect(start)
 
 
 func start():
-	if not is_playing():
-		speed_scale = float(Globals.bpm) / 100.0
-		play("standard")
+	set_speed()
+	play("standard")
 
-func restart():
-	stop()
-	start()
+func set_speed():
+	speed_scale = float(Globals.bpm) / 100.0

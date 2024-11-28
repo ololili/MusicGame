@@ -1,0 +1,153 @@
+[gd_scene load_steps=15 format=3 uid="uid://2aj6jw56lg8n"]
+
+[ext_resource type="Script" path="res://Code/Animation/Actors/Scripts/enemy_projectile.gd" id="1_6ewe7"]
+[ext_resource type="Texture2D" uid="uid://dglecdcpdn4u0" path="res://Assets/Sprites/Actors/EnemyProjectile.png" id="1_7w8aa"]
+[ext_resource type="Script" path="res://Code/Main/Scripts/power_script.gd" id="2_dy3xf"]
+[ext_resource type="Script" path="res://Code/Animation/Scripts/my_animation_player.gd" id="2_fysbx"]
+
+[sub_resource type="Resource" id="Resource_rcey7"]
+resource_local_to_scene = true
+script = ExtResource("2_dy3xf")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uqt57"]
+size = Vector2(4, 4)
+
+[sub_resource type="Animation" id="Animation_j2pme"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ijb50"]
+resource_name = "hi_pow"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_k5y0y"]
+resource_name = "lo_pow"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 4)]
+}
+
+[sub_resource type="Animation" id="Animation_7pmqn"]
+resource_name = "max_pow"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_genq2"]
+resource_name = "mid_pow"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_m0854"]
+resource_name = "min_pow"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 5)]
+}
+
+[sub_resource type="Animation" id="Animation_06eot"]
+resource_name = "startup"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2i(0, 0), Vector2i(5, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vsgc3"]
+_data = {
+"RESET": SubResource("Animation_j2pme"),
+"hi_pow": SubResource("Animation_ijb50"),
+"lo_pow": SubResource("Animation_k5y0y"),
+"max_pow": SubResource("Animation_7pmqn"),
+"mid_pow": SubResource("Animation_genq2"),
+"min_pow": SubResource("Animation_m0854"),
+"startup": SubResource("Animation_06eot")
+}
+
+[node name="EnemyProjectile" type="Area2D"]
+collision_layer = 16
+collision_mask = 5
+script = ExtResource("1_6ewe7")
+power = SubResource("Resource_rcey7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_uqt57")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7w8aa")
+hframes = 6
+vframes = 6
+
+[node name="MyAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vsgc3")
+}
+script = ExtResource("2_fysbx")
+has_one_animation = false
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

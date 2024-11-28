@@ -9,17 +9,18 @@ extends AudioStreamPlayer
 
 var bpm: int
 var max_time_to_beat: float
-var timer_to_beat: float
+var time_to_beat: float
 
 var is_first_song: bool = true
 
 
 func _process(delta):
 	if playing:
-		timer_to_beat += delta
-		if timer_to_beat > max_time_to_beat:
+		time_to_beat -= delta
+		if time_to_beat < 0:
 			Globals.beating()
-			timer_to_beat -= max_time_to_beat
+			time_to_beat += max_time_to_beat
+		Globals.time_to_beat = time_to_beat
 	else:
 		if is_first_song:
 			swap_to_song(intro_song)
@@ -28,7 +29,7 @@ func _process(delta):
 			swap_to_song(battle_songs[0])
 			is_first_song = true
 		play()
-		timer_to_beat = 0.0
+		time_to_beat = max_time_to_beat
 
 
 func swap_to_song(song: AudioStream):
