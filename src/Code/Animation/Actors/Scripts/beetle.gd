@@ -27,6 +27,7 @@ func _process(delta):
 				current_shield.queue_free()
 
 func attack():
+	$ChargeSprite.visible = false
 	var node: Node2D = projectile.instantiate()
 	node.global_position = $AttackPosition.global_position
 	add_sibling(node)

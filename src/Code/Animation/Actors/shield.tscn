@@ -125,10 +125,11 @@ power = SubResource("Resource_44pur")
 ease_of_succes = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(8, 2.5)
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_7xkjm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-8, -2)
 texture = ExtResource("1_6bplh")
 hframes = 6
 vframes = 5

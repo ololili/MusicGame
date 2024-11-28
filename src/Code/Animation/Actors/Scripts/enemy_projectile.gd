@@ -2,7 +2,7 @@ extends Area2D
 
 
 @export var power: Power = null
-var speed: float = 0
+var velocity: Vector2 = Vector2()
 var is_moving: bool = false
 var beetle = null
 
@@ -19,11 +19,12 @@ func _ready():
 	$MyAnimationPlayer.play("startup")
 	Globals.has_beaten.connect(_on_globals_has_beaten)
 	beetle = get_parent().get_node("Beetle")
-	set_speed()
+	set_velocity()
 
 func _process(delta):
 	if is_moving:
-		position.x -= speed * delta
+		position.x += velocity.x * delta
+		position.y += velocity.y * delta
 
 
 func _on_globals_has_beaten():
@@ -35,10 +36,17 @@ func _on_globals_has_beaten():
 func play_animation():
 	$MyAnimationPlayer.play(power.get_level_name() + "_pow")
 
-func set_speed():
-	var destination = beetle.get_node("ShieldPosition").global_position
-	var distance = global_position.distance_to(destination)
-	speed = distance / (Globals.max_time_to_beat * 2)
+func set_velocity():
+	var shield_pos: Vector2 = beetle.get_node("ShieldPosition").global_position
+	var beetle_pos: Vector2 = beetle.global_position
+
+	var direction: Vector2 = global_position.direction_to(beetle_pos)
+	var dist_x = abs(shield_pos.x - global_position.x)
+	var speed_x = dist_x / (Globals.max_time_to_beat * 2)
+
+	velocity.x = direction.x / abs(direction.x) * speed_x
+	velocity.y = direction.y / abs(direction.x) * speed_x
+
 
 func _on_area_entered(area):
 	if area.name == "Beetle":
