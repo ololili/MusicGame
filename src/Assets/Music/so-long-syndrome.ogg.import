@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/so-long-syndrome.ogg-722ce8dd5c0663dc98d0f796
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=127.0
 beat_count=0
 bar_beats=4

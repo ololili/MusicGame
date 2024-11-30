@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://bcbb5nwbp1y7l"]
+[gd_scene load_steps=6 format=3 uid="uid://bcbb5nwbp1y7l"]
 
 [ext_resource type="Script" path="res://Code/Sound/Scripts/music_player.gd" id="1_lbwga"]
-[ext_resource type="AudioStream" uid="uid://cbcvb1x7joddj" path="res://Assets/Music/bip-bop.ogg" id="2_tfewi"]
-[ext_resource type="AudioStream" uid="uid://cn5xeyfko3ta8" path="res://Assets/Music/sky-man.ogg" id="3_wha2h"]
+[ext_resource type="Resource" uid="uid://5auhokoik27x" path="res://Code/Sound/Songs/intro_song.tres" id="2_k242g"]
+[ext_resource type="Script" path="res://Code/Sound/Songs/Scripts/song.gd" id="3_btypf"]
+[ext_resource type="Resource" uid="uid://dhght4tuowpmp" path="res://Code/Sound/Songs/sky-man.tres" id="4_u6n68"]
+[ext_resource type="Resource" uid="uid://e58e3qmetqmw" path="res://Code/Sound/Songs/mountain-trials.tres" id="5_enrjf"]
 
 [node name="MusicPlayer" type="AudioStreamPlayer"]
 script = ExtResource("1_lbwga")
-intro_song = ExtResource("2_tfewi")
-battle_songs = Array[AudioStream]([ExtResource("3_wha2h")])
+intro_song = ExtResource("2_k242g")
+battle_songs = Array[ExtResource("3_btypf")]([ExtResource("4_u6n68"), ExtResource("5_enrjf")])

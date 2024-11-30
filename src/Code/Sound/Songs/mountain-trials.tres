@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Song" load_steps=3 format=3 uid="uid://e58e3qmetqmw"]
+
+[ext_resource type="Script" path="res://Code/Sound/Songs/Scripts/song.gd" id="1_2vqgq"]
+[ext_resource type="AudioStream" uid="uid://duhsk5u4m8q0" path="res://Assets/Music/mountain-trials.ogg" id="1_37u2d"]
+
+[resource]
+script = ExtResource("1_2vqgq")
+audio = ExtResource("1_37u2d")
+has_fase_two = false
+time_to_fase_two = 0.0
+has_fase_three = false
+time_to_fase_three = 0.0

@@ -3,10 +3,14 @@ extends Node
 signal has_beaten
 signal new_song_started
 signal received_damage(amount: float)
+signal stopped_fighting
+signal started_fighting
 
 var bpm: int
 var time_to_beat: float
 var max_time_to_beat: float
+
+var is_fighting: bool = false
 
 func beating():
 	has_beaten.emit()
@@ -26,3 +30,12 @@ func start_new_song(p_bpm: int):
 
 func deal_damage(amount: float):
 	received_damage.emit(amount)
+
+
+func start_fighting():
+	is_fighting = true
+	started_fighting.emit()
+
+func stop_fighting():
+	is_fighting = false
+	stopped_fighting.emit()

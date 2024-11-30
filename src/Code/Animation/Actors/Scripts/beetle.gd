@@ -19,12 +19,13 @@ func _process(delta):
 	if cooldown > 0:
 		cooldown -= delta
 	else:
-		if Input.is_action_just_pressed("button"):
-			make_shield()
-		if Input.is_action_just_released("button"):
-			attack()
-			if is_instance_valid(current_shield):
-				current_shield.queue_free()
+		if Globals.is_fighting:
+			if Input.is_action_just_pressed("button"):
+				make_shield()
+			if Input.is_action_just_released("button"):
+				attack()
+				if is_instance_valid(current_shield):
+					current_shield.queue_free()
 
 func attack():
 	$ChargeSprite.visible = false

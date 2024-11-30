@@ -5,6 +5,7 @@ extends Area2D
 
 func _ready():
 	Globals.has_beaten.connect(_on_globals_has_beaten)
+	Globals.stopped_fighting.connect(_on_globals_stopped_fighting)
 
 func _process(delta):
 	position.x += speed * delta
@@ -19,6 +20,10 @@ func start(starting_power: float):
 
 func play_animation():
 	$MyAnimationPlayer.play(power.get_level_name() + "_pow")
+
+
+func _on_globals_stopped_fighting():
+	queue_free()
 
 func _on_globals_has_beaten():
 	play_animation()

@@ -18,6 +18,7 @@ var beetle = null
 func _ready():
 	$MyAnimationPlayer.play("startup")
 	Globals.has_beaten.connect(_on_globals_has_beaten)
+	Globals.stopped_fighting.connect(_on_globals_stopped_fighting)
 	beetle = get_parent().get_node("Beetle")
 	set_velocity()
 
@@ -26,6 +27,9 @@ func _process(delta):
 		position.x += velocity.x * delta
 		position.y += velocity.y * delta
 
+
+func _on_globals_stopped_fighting():
+	queue_free()
 
 func _on_globals_has_beaten():
 	if not is_moving:

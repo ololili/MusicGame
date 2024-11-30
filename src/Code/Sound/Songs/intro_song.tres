@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Song" load_steps=3 format=3 uid="uid://5auhokoik27x"]
+
+[ext_resource type="AudioStream" uid="uid://cbcvb1x7joddj" path="res://Assets/Music/bip-bop.ogg" id="1_0y3y2"]
+[ext_resource type="Script" path="res://Code/Sound/Songs/Scripts/song.gd" id="1_r0jyb"]
+
+[resource]
+script = ExtResource("1_r0jyb")
+audio = ExtResource("1_0y3y2")
+has_fase_two = false
+time_to_fase_two = 0.0
+has_fase_three = false
+time_to_fase_three = 0.0

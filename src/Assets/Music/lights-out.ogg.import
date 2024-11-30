@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/lights-out.ogg-cebe794593d590a893da41d10d76bc
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=80.0
 beat_count=0
 bar_beats=4

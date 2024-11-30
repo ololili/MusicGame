@@ -4,36 +4,55 @@ extends AudioStreamPlayer
 @export var music_volume: float
 @export var effects_volume: float
 @export_group("songs")
-@export var intro_song: AudioStream
-@export var battle_songs: Array[AudioStream]
+@export var intro_song: Song
+@export var battle_songs: Array[Song]
+
+var battle_song_id: int = 0
 
 var bpm: int
 var max_time_to_beat: float
 var time_to_beat: float
 
-var is_first_song: bool = true
+var is_playing_intro: bool = true
 
+# It should start at the intro song which will be looped forever.
+# If there is an external call it should go into battle songs.
+# At the end of a battle song it should loop back to the intro song.
+# If the external call is sounded again it should kick into the next battle song.
+
+func _ready():
+	start_intro()
 
 func _process(delta):
+	
 	if playing:
-		time_to_beat -= delta
-		if time_to_beat < 0:
-			Globals.beating()
-			time_to_beat += max_time_to_beat
-		Globals.time_to_beat = time_to_beat
+		handle_beating(delta)
 	else:
-		if is_first_song:
-			swap_to_song(intro_song)
-			is_first_song = false
-		else:
-			swap_to_song(battle_songs[0])
-			is_first_song = true
-		play()
-		time_to_beat = max_time_to_beat
+		start_intro()
+			
+func start_battle():
+	swap_to_song(battle_songs[battle_song_id])
+	Globals.start_fighting()
+	battle_song_id += 1
+	battle_song_id = battle_song_id % len(battle_songs)
 
 
-func swap_to_song(song: AudioStream):
-	stream = song
-	bpm = song.bpm
+func start_intro():
+	swap_to_song(intro_song)
+	Globals.stop_fighting()
+
+
+func handle_beating(delta):
+	time_to_beat -= delta
+	if time_to_beat < 0:
+		Globals.beating()
+		time_to_beat += max_time_to_beat
+	Globals.time_to_beat = time_to_beat
+
+func swap_to_song(song: Song):
+	stream = song.audio
+	bpm = int(song.audio.bpm)
 	Globals.start_new_song(bpm)
 	max_time_to_beat = 60.0 / float(bpm)
+	time_to_beat = max_time_to_beat
+	play()

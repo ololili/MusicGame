@@ -20,6 +20,7 @@ var is_degrading: bool = false
 
 func _ready():
 	Globals.has_beaten.connect(_on_globals_has_beaten)
+	Globals.stopped_fighting.connect(_on_globals_stopped_fighting)
 
 func _process(delta):
 	var degradation = delta * -0.25 / Globals.max_time_to_beat
@@ -43,6 +44,9 @@ func get_power_level():
 
 	# print(quality, power.get_level_name(), power.level)
 
+
+func _on_globals_stopped_fighting():
+	queue_free()
 
 func _on_globals_has_beaten():
 	if animations.is_playing() and not is_degrading:

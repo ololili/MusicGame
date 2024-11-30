@@ -11,7 +11,7 @@ resource_local_to_scene = true
 script = ExtResource("2_uq8ni")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fixou"]
-size = Vector2(28, 12)
+size = Vector2(17, 12)
 
 [sub_resource type="Animation" id="Animation_yeluv"]
 length = 0.001
@@ -337,7 +337,7 @@ texture = ExtResource("1_0lcf4")
 hframes = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
+position = Vector2(-5.5, 2)
 shape = SubResource("RectangleShape2D_fixou")
 
 [node name="MyAnimationPlayer" type="AnimationPlayer" parent="."]
