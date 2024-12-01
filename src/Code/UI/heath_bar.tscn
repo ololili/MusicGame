@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Code/UI/Scripts/heath_bar.gd" id="4_b3enn"]
 
 [node name="HeathBar" type="TextureProgressBar"]
-value = 50.0
+value = 100.0
 texture_under = ExtResource("1_fe1ua")
 texture_over = ExtResource("2_wb407")
 texture_progress = ExtResource("3_t3ngw")

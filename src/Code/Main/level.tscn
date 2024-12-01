@@ -13,6 +13,8 @@ resource_local_to_scene = true
 script = ExtResource("5_e8xkf")
 
 [node name="Node2D" type="Node2D"]
+metadata/_edit_vertical_guides_ = [64.0]
+metadata/_edit_horizontal_guides_ = [52.0]
 
 [node name="EmptyShop" parent="." instance=ExtResource("1_ftslm")]
 position = Vector2(96, 54)
@@ -33,6 +35,5 @@ position = Vector2(170, 87)
 
 [node name="HeathBar" parent="." instance=ExtResource("7_kwmnw")]
 offset_left = 64.0
-offset_top = 64.0
 offset_right = 128.0
-offset_bottom = 80.0
+offset_bottom = 16.0

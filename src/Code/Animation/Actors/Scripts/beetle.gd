@@ -2,9 +2,9 @@ extends Area2D
 
 
 @export var power: Power = null
-@export var cooldown_fraction: float = 0.5
+@export var cooldown_fraction: float = 0.25
 
-var shield: PackedScene = preload("res://Code/Animation/Actors/shield.tscn")
+var shield: PackedScene = preload("res://Code/Animation/Actors/fast_shield.tscn")
 var projectile: PackedScene = preload("res://Code/Animation/Actors/my_projectile.tscn")
 var current_shield: Node2D
 var cooldown: float = 0.0
@@ -18,14 +18,15 @@ func _ready():
 func _process(delta):
 	if cooldown > 0:
 		cooldown -= delta
-	else:
-		if Globals.is_fighting:
-			if Input.is_action_just_pressed("button"):
+	if Globals.is_fighting:
+		if Input.is_action_just_pressed("button"):
+			if cooldown <= 0:
 				make_shield()
-			if Input.is_action_just_released("button"):
-				attack()
-				if is_instance_valid(current_shield):
-					current_shield.queue_free()
+				cooldown = max_cooldown
+		if Input.is_action_just_released("button"):
+			# attack()
+			if is_instance_valid(current_shield):
+				current_shield.queue_free()
 
 func attack():
 	$ChargeSprite.visible = false
@@ -45,7 +46,7 @@ func make_shield():
 	current_shield = shield.instantiate()
 	current_shield.global_position = $ShieldPosition.global_position
 	add_sibling(current_shield)
-	current_shield.start()
+	# current_shield.start()
 
 
 func play_animation():
@@ -56,4 +57,5 @@ func set_max_cooldown():
 	max_cooldown = cooldown_fraction * Globals.max_time_to_beat
 
 func _on_globals_has_beaten():
-	play_animation()
+	set_max_cooldown()
+	# play_animation()

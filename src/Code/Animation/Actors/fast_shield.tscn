@@ -1,0 +1,82 @@
+[gd_scene load_steps=10 format=3 uid="uid://c3xnsmurybo5p"]
+
+[ext_resource type="Texture2D" uid="uid://gmqv1jn6w2dp" path="res://Assets/Sprites/Actors/FastShield.png" id="1_j6stf"]
+[ext_resource type="Script" path="res://Code/Animation/Actors/Scripts/fast_shield.gd" id="1_vd3gd"]
+[ext_resource type="Script" path="res://Code/Main/Scripts/power_script.gd" id="2_ckk54"]
+[ext_resource type="Script" path="res://Code/Animation/Scripts/my_animation_player.gd" id="2_rmn6c"]
+
+[sub_resource type="Resource" id="Resource_1d755"]
+resource_local_to_scene = true
+script = ExtResource("2_ckk54")
+
+[sub_resource type="Animation" id="Animation_435ob"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_2m3ic"]
+resource_name = "standard"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.55),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0, 0, 4]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"start_degrading"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lfr5h"]
+_data = {
+"RESET": SubResource("Animation_435ob"),
+"standard": SubResource("Animation_2m3ic")
+}
+
+[sub_resource type="ConcavePolygonShape2D" id="ConcavePolygonShape2D_1om17"]
+segments = PackedVector2Array(3, 12, 3, -2, 3, -2, -1, -9, -1, -9, -8, -12, -8, -12, -18, -14, -8, -12, -2, -3, -3, -3, -3, 12)
+
+[node name="FastShield" type="Area2D"]
+script = ExtResource("1_vd3gd")
+power = SubResource("Resource_1d755")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_j6stf")
+hframes = 5
+
+[node name="MyAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_lfr5h")
+}
+script = ExtResource("2_rmn6c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, 4)
+shape = SubResource("ConcavePolygonShape2D_1om17")

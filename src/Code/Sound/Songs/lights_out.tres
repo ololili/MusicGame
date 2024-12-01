@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Song" load_steps=3 format=3 uid="uid://cc38dxv1slkyq"]
+
+[ext_resource type="AudioStream" uid="uid://8ood6p5asirh" path="res://Assets/Music/lights-out.ogg" id="1_0xlmq"]
+[ext_resource type="Script" path="res://Code/Sound/Songs/Scripts/song.gd" id="1_416au"]
+
+[resource]
+script = ExtResource("1_416au")
+audio = ExtResource("1_0xlmq")
+has_fase_two = true
+time_to_fase_two = 12.0
+has_fase_three = true
+time_to_fase_three = 60.0

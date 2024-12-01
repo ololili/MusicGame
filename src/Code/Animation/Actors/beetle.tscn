@@ -331,6 +331,7 @@ _data = {
 collision_mask = 16
 script = ExtResource("1_17thw")
 power = SubResource("Resource_v3rt2")
+metadata/_edit_vertical_guides_ = [24.0]
 
 [node name="BeetleSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_0lcf4")
@@ -347,7 +348,7 @@ libraries = {
 script = ExtResource("2_vp1p0")
 
 [node name="ShieldPosition" type="Node2D" parent="."]
-position = Vector2(26, -4)
+position = Vector2(24, -4)
 
 [node name="ChargeSprite" type="Sprite2D" parent="."]
 visible = false

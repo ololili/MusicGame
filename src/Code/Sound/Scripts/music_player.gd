@@ -21,7 +21,12 @@ var is_playing_intro: bool = true
 # If the external call is sounded again it should kick into the next battle song.
 
 func _ready():
-	start_intro()
+	var timer = Timer.new()
+	timer.wait_time = 0.1
+	timer.timeout.connect(start_intro)
+	timer.timeout.connect(timer.queue_free)
+	add_child(timer)
+	timer.start()
 
 func _process(delta):
 	

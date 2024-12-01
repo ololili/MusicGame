@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Song" load_steps=3 format=3 uid="uid://qvmpy0gk0tyx"]
+
+[ext_resource type="Script" path="res://Code/Sound/Songs/Scripts/song.gd" id="1_fwew0"]
+[ext_resource type="AudioStream" uid="uid://cs32hl5wly8ck" path="res://Assets/Music/so-long-syndrome.ogg" id="1_hlljt"]
+
+[resource]
+script = ExtResource("1_fwew0")
+audio = ExtResource("1_hlljt")
+has_fase_two = true
+time_to_fase_two = 15.0
+has_fase_three = true
+time_to_fase_three = 30.0

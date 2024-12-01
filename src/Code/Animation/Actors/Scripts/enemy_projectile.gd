@@ -17,10 +17,16 @@ var beetle = null
 
 func _ready():
 	$MyAnimationPlayer.play("startup")
-	Globals.has_beaten.connect(_on_globals_has_beaten)
 	Globals.stopped_fighting.connect(_on_globals_stopped_fighting)
 	beetle = get_parent().get_node("Beetle")
 	set_velocity()
+
+	var timer = Timer.new()
+	timer.wait_time = Globals.max_time_to_beat
+	timer.timeout.connect(_on_timer_timeout)
+	timer.timeout.connect(timer.queue_free)
+	add_child(timer)
+	timer.start()
 
 func _process(delta):
 	if is_moving:
@@ -31,7 +37,7 @@ func _process(delta):
 func _on_globals_stopped_fighting():
 	queue_free()
 
-func _on_globals_has_beaten():
+func _on_timer_timeout():
 	if not is_moving:
 		is_moving = true
 	play_animation()
@@ -54,11 +60,11 @@ func set_velocity():
 
 func _on_area_entered(area):
 	if area.name == "Beetle":
-		Globals.deal_damage(-1 * power.level)
+		Globals.deal_damage(-1 * power.fraction * 5)
 		queue_free()
 	else:
 		power.change_fraction(-1 * area.power.fraction)
-		beetle.add_power(area.power.fraction)
+		# beetle.add_power(area.power.fraction)
 		if power.level == 0:
 			queue_free()
 		else:

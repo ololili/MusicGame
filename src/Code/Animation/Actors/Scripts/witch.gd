@@ -26,15 +26,37 @@ func _on_globals_has_beaten():
 			is_cooling_down = false
 		var ran = randf()
 		if attack_chance > ran:
-			attack_once()
+			attack_sequence(int(attack_chance / ran))
 			attack_chance = 0
 			is_cooling_down = true
 
-func attack_once():
+func attack_once(spawn_pos):
 	var node: Node2D = projectile.instantiate()
 	
-	var spawn_pos: Vector2 = $SpawnPosition.global_position
-	spawn_pos.x += randf_range(-10, 10)
-	spawn_pos.y += randf_range(-10, 10)
+	
 	node.global_position = spawn_pos
 	add_sibling(node)
+
+func attack_sequence(num_attacks: int):
+	var i = 0
+	var spawn_pos: Vector2 = $SpawnPosition.global_position
+	var direction: Vector2 = Vector2()
+	
+	while i < num_attacks:
+		direction.x = randf() - 0.5
+		direction.y = randf() - 0.5
+		direction = direction.normalized()
+		spawn_pos = spawn_pos + direction * 10
+		spawn_pos.x = min(max(spawn_pos.x, 112), 160)
+		spawn_pos.y = min(max(spawn_pos.y, 83), 104)
+		var timer = Timer.new()
+		timer.wait_time = Globals.max_time_to_beat / 2 * i + 0.01
+		timer.timeout.connect(attack_once.bind(spawn_pos))
+		timer.connect("timeout", timer.queue_free)
+		add_child(timer)
+		timer.start()
+		
+		i += 1
+	
+	# attack num_attacks number of times
+	# 
