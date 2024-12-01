@@ -1,16 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://fa1lgmpwnkod"]
+[gd_scene load_steps=7 format=3 uid="uid://fa1lgmpwnkod"]
 
 [ext_resource type="PackedScene" uid="uid://c38sn2ab2a2lh" path="res://Code/Animation/Backgrounds/empty_shop.tscn" id="1_ftslm"]
 [ext_resource type="PackedScene" uid="uid://of6fid240lot" path="res://Code/Animation/Backgrounds/potion_shop.tscn" id="2_s5w05"]
 [ext_resource type="PackedScene" uid="uid://dd17gy7m237yf" path="res://Code/Animation/Backgrounds/broom_shop.tscn" id="3_oso84"]
 [ext_resource type="PackedScene" uid="uid://q4c1yalcba2b" path="res://Code/Animation/Actors/beetle.tscn" id="4_ac43g"]
-[ext_resource type="Script" path="res://Code/Main/Scripts/power_script.gd" id="5_e8xkf"]
 [ext_resource type="PackedScene" uid="uid://6vmxp4dkwd7j" path="res://Code/Animation/Actors/witch.tscn" id="6_nt1no"]
 [ext_resource type="PackedScene" uid="uid://dh5kxm6cm8pes" path="res://Code/UI/heath_bar.tscn" id="7_kwmnw"]
-
-[sub_resource type="Resource" id="Resource_vwy3q"]
-resource_local_to_scene = true
-script = ExtResource("5_e8xkf")
 
 [node name="Node2D" type="Node2D"]
 metadata/_edit_vertical_guides_ = [64.0]
@@ -28,7 +23,6 @@ position = Vector2(160, 40)
 
 [node name="Beetle" parent="." instance=ExtResource("4_ac43g")]
 position = Vector2(32, 95)
-power = SubResource("Resource_vwy3q")
 
 [node name="Witch" parent="." instance=ExtResource("6_nt1no")]
 position = Vector2(170, 87)

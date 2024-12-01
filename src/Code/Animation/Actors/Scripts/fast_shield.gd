@@ -8,26 +8,23 @@ extends Area2D
 # It should time how long it has been alive and then figure out how much longer it lives.
 
 @export var power: Power = null
+@export var live_beat_fraction: float = 0.5
+@export var power_fraction: float = 1.0
 var lifetime: float = 0.0
 var is_degrading: bool = false
 var degradation: float
 
 
 func _ready():
-	power.set_fraction(1.0)
 	lifetime = 0.0
 	is_degrading = false
 	$MyAnimationPlayer.start()
 
 func _process(delta):
+	power.set_fraction(power_fraction)
+	print(power.fraction)
 	lifetime += delta
-	if is_degrading:
-		power.change_fraction(-1 * degradation * delta)
-		if power.level == 0:
-			queue_free()
 
 
-func start_degrading():
-	is_degrading = true
-	var remaining_life = Globals.max_time_to_beat - lifetime
-	degradation = 1 / remaining_life
+func release():
+	$MyAnimationPlayer.speed_scale = $MyAnimationPlayer.speed_scale * 3.8

@@ -1,34 +1,62 @@
 extends Area2D
 
-@export var buildup: float = 0.1
+var buildup: float = 0.1
+var big_buildup: float = 0.3
 var attack_chance: float = 0.0
 
 var projectile: PackedScene = preload("res://Code/Animation/Actors/enemy_projectile.tscn")
 var is_cooling_down: bool = false
+var is_fase_boosting: bool = false
+var fase_boost: int = 0
 
-# Every beat attack chance increases by buildup.
-# Then if random number ran, between 0 and 1, is less than attack chance, an attack happens
-# If it is fase one always a single attack and then chance is reset to 0
-
-# If it is fase two attack (attack_chance / ran) number of times.
-# The attacks should spawn one half of a beat appart
-# They should all spawn in a straight line, that is pointing in a random direction
+# Attack chance comes from buildup in fase one and two in fase three it comes from big_buildup
+# Number of attacks in fase one is always one
+# Number of attacks in fase two is in between one and fase_two_boost
+# Number of attacks in fase three is in between one and fase_three_boost
 
 func _ready():
 	Globals.has_beaten.connect(_on_globals_has_beaten)
+	buildup = Globals.difficutly.buildup
+	big_buildup = Globals.difficutly.fase_three_buildup
+
+	Globals.started_fase_three.connect(_on_globals_started_fase_three)
+	Globals.started_fase_two.connect(_on_globals_started_fase_two)
 	seed(123)
 
 func _on_globals_has_beaten():
 	if Globals.is_fighting:
 		if not is_cooling_down:
-			attack_chance += buildup
+			attack_chance += buildup if not Globals.is_fase_three else big_buildup
+		var ran = randf() + Globals.difficutly.attack_chance_offset
+		if not is_fase_boosting:
+			if attack_chance > ran:
+				var num_attacks = 1
+				if Globals.is_fase_three:
+					num_attacks += int(randf() * Globals.difficutly.fase_three_boost)
+				elif Globals.is_fase_two:
+					num_attacks += int(randf() * Globals.difficutly.fase_two_boost)
+				attack_sequence(num_attacks)
+				attack_chance = 0
+				is_cooling_down = true
 		else:
-			is_cooling_down = false
-		var ran = randf()
-		if attack_chance > ran:
-			attack_sequence(int(attack_chance / ran))
+			print("Fase boost! " + str(fase_boost))
+			attack_sequence(fase_boost)
 			attack_chance = 0
 			is_cooling_down = true
+			is_fase_boosting = false
+
+
+func _on_globals_started_fase_two():
+	is_fase_boosting = true
+	fase_boost = Globals.difficutly.fase_two_boost
+
+func _on_globals_started_fase_three():
+	is_fase_boosting = true
+	fase_boost = Globals.difficutly.fase_three_boost
+
+
+func _on_final_timer_timeout():
+	is_cooling_down = false
 
 func attack_once(spawn_pos):
 	var node: Node2D = projectile.instantiate()
@@ -52,11 +80,11 @@ func attack_sequence(num_attacks: int):
 		var timer = Timer.new()
 		timer.wait_time = Globals.max_time_to_beat / 2 * i + 0.01
 		timer.timeout.connect(attack_once.bind(spawn_pos))
-		timer.connect("timeout", timer.queue_free)
+		timer.timeout.connect(timer.queue_free)
 		add_child(timer)
 		timer.start()
 		
 		i += 1
 	
-	# attack num_attacks number of times
-	# 
+		if i == num_attacks:
+			timer.timeout.connect(_on_final_timer_timeout)

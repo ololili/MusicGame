@@ -1,12 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://bcbb5nwbp1y7l"]
+[gd_scene load_steps=11 format=3 uid="uid://bcbb5nwbp1y7l"]
 
 [ext_resource type="Script" path="res://Code/Sound/Scripts/music_player.gd" id="1_lbwga"]
 [ext_resource type="Resource" uid="uid://5auhokoik27x" path="res://Code/Sound/Songs/intro_song.tres" id="2_k242g"]
 [ext_resource type="Script" path="res://Code/Sound/Songs/Scripts/song.gd" id="3_btypf"]
-[ext_resource type="Resource" uid="uid://dhght4tuowpmp" path="res://Code/Sound/Songs/sky-man.tres" id="4_u6n68"]
-[ext_resource type="Resource" uid="uid://e58e3qmetqmw" path="res://Code/Sound/Songs/mountain-trials.tres" id="5_enrjf"]
+[ext_resource type="Resource" uid="uid://c7df8c2qd3ar1" path="res://Code/Sound/Songs/sparkle_stars.tres" id="4_bj4p8"]
+[ext_resource type="Resource" uid="uid://dhght4tuowpmp" path="res://Code/Sound/Songs/sky_man.tres" id="4_u6n68"]
+[ext_resource type="Resource" uid="uid://e58e3qmetqmw" path="res://Code/Sound/Songs/mountain_trials.tres" id="5_enrjf"]
+[ext_resource type="Resource" uid="uid://cc38dxv1slkyq" path="res://Code/Sound/Songs/lights_out.tres" id="5_umutp"]
+[ext_resource type="Resource" uid="uid://ta661xicemve" path="res://Code/Sound/Songs/melody_meadow.tres" id="6_b6w6p"]
+[ext_resource type="Resource" uid="uid://qvmpy0gk0tyx" path="res://Code/Sound/Songs/so_long_syndrome.tres" id="8_no2jt"]
+[ext_resource type="Resource" uid="uid://bko20tej4s5vw" path="res://Code/Sound/Songs/effervesce.tres" id="10_j88uo"]
 
 [node name="MusicPlayer" type="AudioStreamPlayer"]
 script = ExtResource("1_lbwga")
 intro_song = ExtResource("2_k242g")
-battle_songs = Array[ExtResource("3_btypf")]([ExtResource("4_u6n68"), ExtResource("5_enrjf")])
+battle_songs = Array[ExtResource("3_btypf")]([ExtResource("4_bj4p8"), ExtResource("5_umutp"), ExtResource("6_b6w6p"), ExtResource("4_u6n68"), ExtResource("8_no2jt"), ExtResource("5_enrjf"), ExtResource("10_j88uo")])

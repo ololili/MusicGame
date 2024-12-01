@@ -1,14 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://q4c1yalcba2b"]
+[gd_scene load_steps=15 format=3 uid="uid://q4c1yalcba2b"]
 
 [ext_resource type="Texture2D" uid="uid://ckobafmrjvgpd" path="res://Assets/Sprites/Actors/Beetle.png" id="1_0lcf4"]
 [ext_resource type="Script" path="res://Code/Animation/Actors/Scripts/beetle.gd" id="1_17thw"]
-[ext_resource type="Script" path="res://Code/Main/Scripts/power_script.gd" id="2_uq8ni"]
 [ext_resource type="Script" path="res://Code/Animation/Scripts/my_animation_player.gd" id="2_vp1p0"]
 [ext_resource type="Texture2D" uid="uid://c8cqu41t61qxa" path="res://Assets/Sprites/Actors/ChargeAttack.png" id="4_vql7h"]
-
-[sub_resource type="Resource" id="Resource_v3rt2"]
-resource_local_to_scene = true
-script = ExtResource("2_uq8ni")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fixou"]
 size = Vector2(17, 12)
@@ -330,8 +325,6 @@ _data = {
 [node name="Beetle" type="Area2D"]
 collision_mask = 16
 script = ExtResource("1_17thw")
-power = SubResource("Resource_v3rt2")
-metadata/_edit_vertical_guides_ = [24.0]
 
 [node name="BeetleSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_0lcf4")
@@ -348,7 +341,7 @@ libraries = {
 script = ExtResource("2_vp1p0")
 
 [node name="ShieldPosition" type="Node2D" parent="."]
-position = Vector2(24, -4)
+position = Vector2(24, -3)
 
 [node name="ChargeSprite" type="Sprite2D" parent="."]
 visible = false

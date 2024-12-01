@@ -5,6 +5,7 @@ extends Area2D
 var velocity: Vector2 = Vector2()
 var is_moving: bool = false
 var beetle = null
+var has_been_hit: bool = false
 
 # It is created on a beat and starts to play startup animation right away
 # After the second beat, when the startup is finished playing, it should start moving
@@ -16,22 +17,28 @@ var beetle = null
 # Meaning speed should be: distance / (max_time_to_beat * 2)
 
 func _ready():
+	if not Globals.is_fighting:
+		queue_free()
+		return null
 	$MyAnimationPlayer.play("startup")
 	Globals.stopped_fighting.connect(_on_globals_stopped_fighting)
 	beetle = get_parent().get_node("Beetle")
+	has_been_hit = false
 	set_velocity()
+	delay_start()
 
+func _process(delta):
+	if is_moving:
+		position.x += velocity.x * delta
+		position.y += velocity.y * delta
+
+func delay_start():
 	var timer = Timer.new()
 	timer.wait_time = Globals.max_time_to_beat
 	timer.timeout.connect(_on_timer_timeout)
 	timer.timeout.connect(timer.queue_free)
 	add_child(timer)
 	timer.start()
-
-func _process(delta):
-	if is_moving:
-		position.x += velocity.x * delta
-		position.y += velocity.y * delta
 
 
 func _on_globals_stopped_fighting():
@@ -63,8 +70,9 @@ func _on_area_entered(area):
 		Globals.deal_damage(-1 * power.fraction * 5)
 		queue_free()
 	else:
-		power.change_fraction(-1 * area.power.fraction)
-		# beetle.add_power(area.power.fraction)
+		if not has_been_hit:
+			power.change_fraction(-1 * area.power.fraction)
+			has_been_hit = true
 		if power.level == 0:
 			queue_free()
 		else:

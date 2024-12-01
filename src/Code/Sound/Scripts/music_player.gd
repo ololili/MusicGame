@@ -61,3 +61,21 @@ func swap_to_song(song: Song):
 	max_time_to_beat = 60.0 / float(bpm)
 	time_to_beat = max_time_to_beat
 	play()
+	set_fases(song)
+
+func set_fases(song: Song):
+	if song.has_fase_two:
+		var timer = Timer.new()
+		timer.wait_time = song.time_to_fase_two
+		timer.timeout.connect(Globals.start_fase_two)
+		timer.timeout.connect(timer.queue_free)
+		add_child(timer)
+		timer.start()
+	
+	if song.has_fase_three:
+		var timer = Timer.new()
+		timer.wait_time = song.time_to_fase_three
+		timer.timeout.connect(Globals.start_fase_three)
+		timer.timeout.connect(timer.queue_free)
+		add_child(timer)
+		timer.start()

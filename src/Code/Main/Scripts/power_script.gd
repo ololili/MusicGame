@@ -4,7 +4,7 @@ extends Resource
 
 var level_dict: Dictionary = {5: "max", 4: "hi", 3: "mid", 2: "lo", 1: "min", 0: "no"}
 var level: int = 5
-var fraction = 1.0
+@export var fraction: float = 1.0
 
 
 func set_fraction(new_fraction: float):
