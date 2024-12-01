@@ -44,12 +44,10 @@ func deal_damage(amount: float):
 func start_fase_two():
 	is_fase_two = true
 	started_fase_two.emit()
-	print("fase two started!")
 
 func start_fase_three():
 	is_fase_three = true
 	started_fase_three.emit()
-	print("fase three started!")
 
 func start_fighting():
 	is_fighting = true

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c326gjeohsdyp"]
+
+[ext_resource type="Script" path="res://Code/Main/Scripts/score_scene.gd" id="1_sho4d"]
+[ext_resource type="Texture2D" uid="uid://cv3kqoc5q6eox" path="res://Assets/Sprites/Backgrounds/ScoreBackgound.png" id="1_uj3ob"]
+[ext_resource type="PackedScene" uid="uid://c0aksm1xl2225" path="res://Code/UI/my_progress_bar.tscn" id="2_1ny2y"]
+
+[node name="ScoreScene" type="Node2D"]
+script = ExtResource("1_sho4d")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(96, 54)
+texture = ExtResource("1_uj3ob")
+
+[node name="MyProgressBar" parent="." instance=ExtResource("2_1ny2y")]
+offset_left = 16.0
+offset_top = 86.0
+offset_right = 176.0
+offset_bottom = 102.0

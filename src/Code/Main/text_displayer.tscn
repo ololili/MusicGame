@@ -4,9 +4,10 @@
 [ext_resource type="Script" path="res://Code/Main/Scripts/text_displayer.gd" id="2_l8u15"]
 
 [node name="TextDisplayer" type="Label"]
-offset_right = 68.0
+offset_right = 89.0
 offset_bottom = 23.0
-text = "testing testing
+text = "press space to start
 "
 label_settings = ExtResource("1_70eck")
+autowrap_mode = 2
 script = ExtResource("2_l8u15")

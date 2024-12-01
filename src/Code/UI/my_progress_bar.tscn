@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0aksm1xl2225"]
+
+[ext_resource type="Texture2D" uid="uid://cpk3s7otwu1h1" path="res://Assets/Sprites/Actors/ProgressBar/ProgressBarBackground.png" id="1_mn4km"]
+[ext_resource type="Texture2D" uid="uid://byupht05l633k" path="res://Assets/Sprites/Actors/ProgressBar/ProgressBarFill.png" id="2_7d3bq"]
+
+[node name="MyProgressBar" type="TextureProgressBar"]
+texture_under = ExtResource("1_mn4km")
+texture_progress = ExtResource("2_7d3bq")

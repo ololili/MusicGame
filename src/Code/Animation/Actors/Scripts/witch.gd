@@ -9,10 +9,6 @@ var is_cooling_down: bool = false
 var is_fase_boosting: bool = false
 var fase_boost: int = 0
 
-# Attack chance comes from buildup in fase one and two in fase three it comes from big_buildup
-# Number of attacks in fase one is always one
-# Number of attacks in fase two is in between one and fase_two_boost
-# Number of attacks in fase three is in between one and fase_three_boost
 
 func _ready():
 	Globals.has_beaten.connect(_on_globals_has_beaten)
@@ -39,7 +35,6 @@ func _on_globals_has_beaten():
 				attack_chance = 0
 				is_cooling_down = true
 		else:
-			print("Fase boost! " + str(fase_boost))
 			attack_sequence(fase_boost)
 			attack_chance = 0
 			is_cooling_down = true
