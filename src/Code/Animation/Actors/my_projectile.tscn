@@ -8,6 +8,7 @@
 [sub_resource type="Resource" id="Resource_ho2ow"]
 resource_local_to_scene = true
 script = ExtResource("2_mqkwi")
+fraction = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lmpbs"]
 size = Vector2(3, 3)

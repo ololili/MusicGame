@@ -2,7 +2,7 @@ extends Area2D
 
 
 @export var power: Power = null
-var velocity: Vector2 = Vector2()
+@export var velocity: Vector2 = Vector2()
 var is_moving: bool = false
 var beetle = null
 var has_been_hit: bool = false
@@ -47,13 +47,14 @@ func _on_globals_stopped_fighting():
 func _on_timer_timeout():
 	if not is_moving:
 		is_moving = true
-	play_animation()
 
 
 func play_animation():
 	$MyAnimationPlayer.play(power.get_level_name() + "_pow")
+	$MyAnimationPlayer.seek(0.001)
+	$MyAnimationPlayer.pause()
 
-func set_velocity():
+func set_velocity(is_stopped: bool = false):
 	var shield_pos: Vector2 = beetle.get_node("ShieldPosition").global_position
 	var beetle_pos: Vector2 = beetle.global_position
 
@@ -63,12 +64,16 @@ func set_velocity():
 
 	velocity.x = direction.x / abs(direction.x) * speed_x
 	velocity.y = direction.y / abs(direction.x) * speed_x
+	if is_stopped:
+		velocity.x = 0
+		velocity.y = 0
 
 
 func _on_area_entered(area):
 	if area.name == "Beetle":
 		Globals.deal_damage(-1 * power.fraction * 5)
-		queue_free()
+		$MyAnimationPlayer.play(power.get_level_name() + "_pow")
+		$MyAnimationPlayer.speed_scale = $MyAnimationPlayer.speed_scale * 3
 	else:
 		if not has_been_hit:
 			power.change_fraction(-1 * area.power.fraction)

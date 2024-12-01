@@ -22,7 +22,6 @@ func _ready():
 
 func _process(delta):
 	power.set_fraction(power_fraction)
-	print(power.fraction)
 	lifetime += delta
 
 
