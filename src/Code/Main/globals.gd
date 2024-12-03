@@ -59,15 +59,11 @@ func deal_damage(amount: float):
 	received_damage.emit(amount)
 
 func start_fase_two():
-	print("It should not be fase two yet: " + str(is_fase_two))
 	is_fase_two = true
-	print("It should now be fase two: " + str(is_fase_two))
 	started_fase_two.emit()
 
 func start_fase_three():
-	print("It should not be fase three yet: " + str(is_fase_three))
 	is_fase_three = true
-	print("It should now be fase three: " + str(is_fase_three))
 	started_fase_three.emit()
 
 func start_fighting():
