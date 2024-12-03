@@ -59,7 +59,9 @@ func end_battle():
 func next_battle():
 	battle_song_id += 1
 	if battle_song_id == len(battle_songs):
-		battle_song_id = 0
+		battle_song_id = -1
+		Globals.end_game()
+		return null
 	
 	current_battle_song = battle_songs[battle_song_id]
 	Globals.current_battle_song = current_battle_song

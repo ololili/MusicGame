@@ -1,0 +1,66 @@
+[gd_scene load_steps=11 format=3 uid="uid://cjilpap1evog4"]
+
+[ext_resource type="Texture2D" uid="uid://7bvk0w5lo1k" path="res://Assets/Sprites/Backgrounds/HiScoreCard.png" id="1_r0qgw"]
+[ext_resource type="PackedScene" uid="uid://dvvn3rgj7kc2m" path="res://Code/UI/final_score.tscn" id="2_38dqv"]
+[ext_resource type="Script" path="res://Code/Main/Scripts/final_score_scene.gd" id="2_rax8k"]
+[ext_resource type="Resource" uid="uid://c7df8c2qd3ar1" path="res://Code/Sound/Songs/sparkle_stars.tres" id="3_18ik3"]
+[ext_resource type="Resource" uid="uid://cc38dxv1slkyq" path="res://Code/Sound/Songs/lights_out.tres" id="4_rp8jc"]
+[ext_resource type="Resource" uid="uid://ta661xicemve" path="res://Code/Sound/Songs/melody_meadow.tres" id="5_ai253"]
+[ext_resource type="Resource" uid="uid://dhght4tuowpmp" path="res://Code/Sound/Songs/sky_man.tres" id="6_j5nk3"]
+[ext_resource type="Resource" uid="uid://qvmpy0gk0tyx" path="res://Code/Sound/Songs/so_long_syndrome.tres" id="7_w6k8b"]
+[ext_resource type="Resource" uid="uid://e58e3qmetqmw" path="res://Code/Sound/Songs/mountain_trials.tres" id="8_hxqct"]
+[ext_resource type="Resource" uid="uid://bko20tej4s5vw" path="res://Code/Sound/Songs/effervesce.tres" id="9_u05yn"]
+
+[node name="FinalScoreScene" type="Sprite2D"]
+position = Vector2(96, 54)
+texture = ExtResource("1_r0qgw")
+script = ExtResource("2_rax8k")
+
+[node name="FinalScore" parent="." instance=ExtResource("2_38dqv")]
+offset_left = 41.0
+offset_top = -37.0
+offset_right = 65.0
+offset_bottom = -27.0
+song = ExtResource("3_18ik3")
+
+[node name="FinalScore2" parent="." instance=ExtResource("2_38dqv")]
+offset_left = 41.0
+offset_top = -27.0
+offset_right = 65.0
+offset_bottom = -17.0
+song = ExtResource("4_rp8jc")
+
+[node name="FinalScore3" parent="." instance=ExtResource("2_38dqv")]
+offset_left = 41.0
+offset_top = -17.0
+offset_right = 65.0
+offset_bottom = -7.0
+song = ExtResource("5_ai253")
+
+[node name="FinalScore4" parent="." instance=ExtResource("2_38dqv")]
+offset_left = 41.0
+offset_top = -7.0
+offset_right = 65.0
+offset_bottom = 3.0
+song = ExtResource("6_j5nk3")
+
+[node name="FinalScore5" parent="." instance=ExtResource("2_38dqv")]
+offset_left = 41.0
+offset_top = 3.0
+offset_right = 65.0
+offset_bottom = 13.0
+song = ExtResource("7_w6k8b")
+
+[node name="FinalScore6" parent="." instance=ExtResource("2_38dqv")]
+offset_left = 41.0
+offset_top = 13.0
+offset_right = 65.0
+offset_bottom = 23.0
+song = ExtResource("8_hxqct")
+
+[node name="FinalScore7" parent="." instance=ExtResource("2_38dqv")]
+offset_left = 41.0
+offset_top = 23.0
+offset_right = 65.0
+offset_bottom = 33.0
+song = ExtResource("9_u05yn")

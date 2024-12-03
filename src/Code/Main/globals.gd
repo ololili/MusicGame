@@ -10,11 +10,13 @@ signal stopped_fighting
 signal started_fighting
 signal started_fase_two
 signal started_fase_three
+signal ended_game
 
 # These signals are called from text displayer or score scene
 signal moved_to_next_song
 signal moved_to_previous_song
 signal started_game
+signal restarted_game
 
 # This signal is called from health bar when the hp runs out
 signal lost_game
@@ -57,11 +59,15 @@ func deal_damage(amount: float):
 	received_damage.emit(amount)
 
 func start_fase_two():
+	print("It should not be fase two yet: " + str(is_fase_two))
 	is_fase_two = true
+	print("It should now be fase two: " + str(is_fase_two))
 	started_fase_two.emit()
 
 func start_fase_three():
+	print("It should not be fase three yet: " + str(is_fase_three))
 	is_fase_three = true
+	print("It should now be fase three: " + str(is_fase_three))
 	started_fase_three.emit()
 
 func start_fighting():
@@ -84,3 +90,9 @@ func start_game():
 
 func lose_game():
 	lost_game.emit()
+
+func end_game():
+	ended_game.emit()
+
+func restart_game():
+	restarted_game.emit()

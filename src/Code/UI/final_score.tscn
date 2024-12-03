@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvvn3rgj7kc2m"]
+
+[ext_resource type="LabelSettings" uid="uid://cjx7061ex3x0c" path="res://Assets/Fonts/standard_label_settings.tres" id="1_jlrl5"]
+[ext_resource type="Script" path="res://Code/UI/Scripts/final_score.gd" id="2_4uvtg"]
+[ext_resource type="Texture2D" uid="uid://elp42nws2gkn" path="res://Assets/Sprites/Backgrounds/Cover.png" id="2_aayju"]
+
+[node name="FinalScore" type="Label"]
+text = "100"
+label_settings = ExtResource("1_jlrl5")
+script = ExtResource("2_4uvtg")
+
+[node name="Cover" type="Sprite2D" parent="."]
+position = Vector2(36.25, 5)
+scale = Vector2(1.11905, 1)
+texture = ExtResource("2_aayju")
