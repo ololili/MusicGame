@@ -7,13 +7,18 @@ extends AudioStreamPlayer
 @export var intro_song: Song
 @export var battle_songs: Array[Song]
 
-var battle_song_id: int = 0
+var current_song: Song
+var current_battle_song: Song
+
+# This is incremented before every use
+# It needs to start at -1 to start at 0
+var battle_song_id: int = -1
 
 var bpm: int
 var max_time_to_beat: float
 var time_to_beat: float
 
-var is_playing_intro: bool = true
+var has_started: bool = false
 
 # It should start at the intro song which will be looped forever.
 # If there is an external call it should go into battle songs.
@@ -28,24 +33,39 @@ func _ready():
 	add_child(timer)
 	timer.start()
 
-func _process(delta):
-	
-	if playing:
-		handle_beating(delta)
-	else:
-		start_intro()
-			
-func start_battle():
-	swap_to_song(battle_songs[battle_song_id])
-	Globals.start_fighting()
-	battle_song_id += 1
-	battle_song_id = battle_song_id % len(battle_songs)
+	Globals.started_game.connect(next_battle)
+	Globals.moved_to_next_song.connect(next_battle)
+	Globals.moved_to_previous_song.connect(previous_battle)
+	Globals.lost_game.connect(end_battle)
 
+func _process(delta):
+	if has_started:
+		if playing:
+			handle_beating(delta)
+		elif current_song == intro_song:
+			play()
+		elif current_song == current_battle_song:
+			end_battle()
+			
 
 func start_intro():
 	swap_to_song(intro_song)
+	has_started = true
+
+func end_battle():
+	swap_to_song(intro_song)
 	Globals.stop_fighting()
 
+func next_battle():
+	battle_song_id += 1
+	current_battle_song = battle_songs[battle_song_id]
+	Globals.current_battle_song = current_battle_song
+	swap_to_song(current_battle_song)
+	Globals.start_fighting()
+
+func previous_battle():
+	swap_to_song(current_battle_song)
+	Globals.start_fighting()
 
 func handle_beating(delta):
 	time_to_beat -= delta
@@ -55,6 +75,7 @@ func handle_beating(delta):
 	Globals.time_to_beat = time_to_beat
 
 func swap_to_song(song: Song):
+	current_song = song
 	stream = song.audio
 	bpm = int(song.audio.bpm)
 	Globals.start_new_song(bpm)
@@ -79,3 +100,9 @@ func set_fases(song: Song):
 		timer.timeout.connect(timer.queue_free)
 		add_child(timer)
 		timer.start()
+
+func _on_globals_moved_to_next_song():
+	next_battle()
+
+func _on_globals_moved_to_previous_song():
+	previous_battle()

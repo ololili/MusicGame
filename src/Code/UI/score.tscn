@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bm0uaph4f73hn"]
+
+[ext_resource type="LabelSettings" uid="uid://cjx7061ex3x0c" path="res://Assets/Fonts/standard_label_settings.tres" id="1_d6xmu"]
+[ext_resource type="Script" path="res://Code/UI/Scripts/score.gd" id="1_vl6um"]
+
+[node name="Score" type="Label"]
+text = "000"
+label_settings = ExtResource("1_d6xmu")
+script = ExtResource("1_vl6um")

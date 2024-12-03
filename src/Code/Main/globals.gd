@@ -1,12 +1,23 @@
 extends Node
 
+
+signal received_damage(amount: float)
+
+# These signals are called from music player
 signal has_beaten
 signal new_song_started
-signal received_damage(amount: float)
 signal stopped_fighting
 signal started_fighting
 signal started_fase_two
 signal started_fase_three
+
+# These signals are called from text displayer or score scene
+signal moved_to_next_song
+signal moved_to_previous_song
+signal started_game
+
+# This signal is called from health bar when the hp runs out
+signal lost_game
 
 
 var bpm: int
@@ -18,6 +29,10 @@ var is_fase_two: bool = false
 var is_fase_three: bool = false
 
 var difficutly: Difficulty
+
+# Contains the battle song that is currently playing
+# Unless the intro is playing in which case it contains the last one
+var current_battle_song: Song
 
 
 func beating():
@@ -56,3 +71,16 @@ func start_fighting():
 func stop_fighting():
 	is_fighting = false
 	stopped_fighting.emit()
+
+
+func move_to_next_song():
+	moved_to_next_song.emit()
+
+func move_to_previous_song():
+	moved_to_previous_song.emit()
+
+func start_game():
+	started_game.emit()
+
+func lose_game():
+	lost_game.emit()

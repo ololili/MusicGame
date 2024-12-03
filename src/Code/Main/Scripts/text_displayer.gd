@@ -7,5 +7,5 @@ func _process(_delta):
 
 
 func into_the_fight():
-	get_parent().get_node("MusicPlayer").start_battle()
+	Globals.start_game()
 	queue_free()

@@ -8,11 +8,11 @@
 
 [sub_resource type="Resource" id="Resource_1kbvl"]
 script = ExtResource("2_3gkmh")
-buildup = 0.1
-attack_chance_offset = 0.1
-fase_two_boost = 4
-fase_three_boost = 8
-fase_three_buildup = 0.3
+buildup = 0.3
+attack_chance_offset = 0.0
+fase_two_boost = 3
+fase_three_boost = 6
+fase_three_buildup = 0.6
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_p7jh7")

@@ -17,7 +17,7 @@ func _ready():
 
 	Globals.started_fase_three.connect(_on_globals_started_fase_three)
 	Globals.started_fase_two.connect(_on_globals_started_fase_two)
-	seed(123)
+	Globals.started_fighting.connect(_on_globals_started_fighting)
 
 func _on_globals_has_beaten():
 	if Globals.is_fighting:
@@ -52,6 +52,9 @@ func _on_globals_started_fase_three():
 
 func _on_final_timer_timeout():
 	is_cooling_down = false
+
+func _on_globals_started_fighting():
+	seed(Globals.current_battle_song.resource_name.hash())
 
 func attack_once(spawn_pos):
 	var node: Node2D = projectile.instantiate()
