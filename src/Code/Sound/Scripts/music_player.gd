@@ -58,6 +58,9 @@ func end_battle():
 
 func next_battle():
 	battle_song_id += 1
+	if battle_song_id == len(battle_songs):
+		battle_song_id = 0
+	
 	current_battle_song = battle_songs[battle_song_id]
 	Globals.current_battle_song = current_battle_song
 	swap_to_song(current_battle_song)

@@ -6,12 +6,12 @@
 [resource]
 script = ExtResource("2_j0vkk")
 audio = ExtResource("1_ot8lr")
-has_fase_two = true
+has_fase_two = false
 time_to_fase_two = 12.0
 has_fase_three = false
 time_to_fase_three = 0.0
 mine = 0.0
-sannie = 0.0
 jan_louw = 0.0
-player = 0.0
+sannie = 0.0
 player_hi_score = 0.0
+player = 0.0
